@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>تشفير الكلمة</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .word-list {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .word-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .word-list li {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function encryptText() {
+            // الحصول على النص المدخل من المستخدم
+            let inputText = document.getElementById("inputText").value;
+
+            // تعريف الكلمات التي سيتم تشفيرها
+            let encryptionMap = {
+                "حساب": "ال7اب",
+                "حسابات": "ال7سابا",
+                "س": "ىىى",
+                "فيبوكس": "الڤيبوكس",
+                "فورتنايت": "الفورتنايت",
+                "لايكات": "الايگات",
+                "تكتوك": "التىكتوك",
+                "اسعار": "الاىىىعار",
+            };
+
+            // التحقق إذا كانت الكلمة المدخلة موجودة في الخريطة
+            let encryptedText = encryptionMap[inputText];
+            // إذا كانت الكلمة موجودة في الخريطة، سيتم تحويلها إلى الكلمة المشفرة
+            if (encryptedText) {
+                document.getElementById("encryptedText").innerText = "النص المشفر: " + encryptedText;
+            } else {
+                document.getElementById("encryptedText").innerText = "لا يوجد تشفير للكلمة المدخلة";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>تشفير الكلمة</h1>
+        <label for="inputText">أدخل الكلمة:</label>
+        <input type="text" id="inputText">
+        <button onclick="encryptText()">تشفير</button>
+        <p id="encryptedText"></p>
+
+        <!-- قائمة الكلمات التي يمكن تشفيرها -->
+        <div class="word-list">
+            <h3>الكلمات التي يمكنك تشفيرها:</h3>
+            <ul>
+                <li>حساب</li>
+                <li>حسابات</li>
+                <li>س</li>
+                <li>فيبوكس</li>
+                <li>فورتنايت</li>
+                <li>لايكات</li>
+                <li>تكتوك</li>
+                <li>اسعار</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
